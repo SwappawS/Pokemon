@@ -7,10 +7,13 @@ class Pokemon:
     def spawn(self):
         print("Un" + self.name + "de niveau" + self.nv + "sauvage apparait !")
 
+
+
 p1 = Pokemon("rattata","nvrat","35","TauxCaptureRat")
 p2 = Pokemon("roucool","nvrouc","35","TauxCaptureBird")
 p3 = Pokemon("nidoran","nvnido","25","TauxCaptureLapin")
 p4 = Pokemon("mew","nvmew","5","TauxCaptureMew")
+
 
 class Ball:
     def __init__(self,name,nbrBallInv,BonusCapture):
@@ -36,6 +39,11 @@ if typeball=="H":
     Ball=b3
 elif typeball!="P" or "S" or "H":
     print("veuillez entrer une valeur de pokeball possible")
+
+TauxCapture=Pokemon.TauxCapture
+NvPokemonSauvage=Pokemon.nv
+FacteurBall=Ball.BonusCapture
+ChanceCapture=(TauxCapture * NvPokemonSauvage) * (FacteurBall)
 
 if action=="F":
     print("Vous avez fui le pokemon sauvage")
