@@ -5,7 +5,7 @@ import argparse
 
 def generate_number() -> int:
     
-    return random.randint(1, 5)
+    return random.randint(1, 100)
 
 
 def main(count: int = 1):
