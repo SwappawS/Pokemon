@@ -1,0 +1,28 @@
+
+import random
+import argparse
+
+
+def generate_number() -> int:
+    
+    return random.randint(1, 5)
+
+
+def main(count: int = 1):
+    
+    if count == 1:
+        return generate_number()
+    return [generate_number() for _ in range(count)]
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Génère un (ou plusieurs) entier(s) aléatoire(s) entre 1 et 5 (sans décimales).")
+    parser.add_argument("-n", "--count", type=int, default=1, help="Nombre d'entiers à générer (par défaut 1)")
+    args = parser.parse_args()
+
+    result = main(args.count)
+    if isinstance(result, list):
+        for value in result:
+            print(value)
+    else:
+        print(result)
