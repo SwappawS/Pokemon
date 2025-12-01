@@ -1,0 +1,23 @@
+import random
+def generate_number():
+    rattata = 1
+    roucool = 2
+    nidoran = 3
+    mew = 4
+    rand = random.random()
+    if rand < 0.35:
+        return rattata
+    elif rand < 0.70:  # 0.35 + 0.35
+        return roucool
+    elif rand < 0.95:  # 0.70 + 0.25
+        return nidoran
+    else:
+        return mew
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    results = [generate_number() for _ in range(1000)]
+    pokemon_names = {1: "Rattata", 2: "Roucool", 3: "Nidoran", 4: "Mew"}
+    for result in results:
+        print(pokemon_names[result])
+        break

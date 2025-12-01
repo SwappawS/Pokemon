@@ -26,3 +26,7 @@ if __name__ == "__main__":
             print(value)
     else:
         print(result)
+
+print ("C'est le niveau du pokémon")
+
+
