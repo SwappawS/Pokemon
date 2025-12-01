@@ -21,3 +21,23 @@ class Ball:
 b1= Ball("pokeball","50","1")
 b2= Ball("superball","25","1.25")
 b3= Ball("hyperball","10","1.5")
+
+QUESTION1="Que voulez-vous faire ? F=fuire C=Capturer"
+QUESTION2="Quelle pokeball voulez-vous utiliser ? P=pokeball, S=superball, H= hyperball"
+
+action=input(QUESTION1)
+
+typeball=input(QUESTION2)
+if typeball=="P":
+    Ball=b1
+if typeball=="S":
+    Ball=b2
+if typeball=="H":
+    Ball=b3
+elif typeball!="P" or "S" or "H":
+    print("veuillez entrer une valeur de pokeball possible")
+
+if action=="F":
+    print("Vous avez fui le pokemon sauvage")
+if action=="C":
+    print("Vous lancer la pokeball au pokemon sauvage")
