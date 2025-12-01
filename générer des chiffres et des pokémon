@@ -1,0 +1,5 @@
+import random
+
+# Générer un chiffre entier entre 1 et 100
+nombre = random.randint(1, 100)
+print(f"Nombre généré : {nombre}")
