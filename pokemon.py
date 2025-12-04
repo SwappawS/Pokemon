@@ -63,40 +63,51 @@ b1 = Ball("pokeball", 50, 1)
 b2 = Ball( "superball", 25, 2)
 b3 = Ball("hyperball", 10, 3)
 
-QUESTION1="Que voulez-vous faire ? F=fuire C=Capturer: "
-QUESTION2="Quelle pokeball voulez-vous utiliser ? P=pokeball, S=superball, H= hyperball: "
+QUESTION1="Que voulez-vous faire ? F=Fuir C=Capturer: "
+QUESTION2="Quelle pokeball voulez-vous utiliser ? P=pokeball, S=superball, H=hyperball: "
 
-action1=input(QUESTION1)
-if action1!="F" and action1!="C" and action1!="f" and action1!="c":
-    print("veuillez entrer une valeur correcte ! ")
-if action1=="F" or action1=="f":
-    print("Vous avez fui le pokemon sauvage ")
+# Boucle pour redemander l'action si invalide
+while True:
+    action1 = input(QUESTION1)
+    if action1.lower() in ["f", "c"]:
+        break
+    else:
+        print(" Veuillez entrer F (Fuir) ou C (Capturer) !")
+
+if action1.lower() == "f":
+    print("Vous avez fui le pokemon sauvage !")
     exit()
 
-typeball=input(QUESTION2)
-if typeball=="P":
-    Ball=b1
-if typeball=="S":
-    Ball=b2
-if typeball=="H":
-    Ball=b3
-elif typeball!="P" or "S" or "H" or "F":
-    print("veuillez entrer une valeur de pokeball possible ")
-
-
-TauxCapture=spawn1.TauxCapture
-NvPokemonSauvage=spawn1.nv
-FacteurBall=int(Ball.BonusCapture)
-ChanceCapture=((TauxCapture * NvPokemonSauvage) * (FacteurBall))/100
-
-
-if action1=="C" or action1=="c":
-    print("Vous lancer la pokeball au pokemon sauvage")
-    import random
-    ChanceDresseur=random.randint(1,100)
-    if ChanceCapture<=ChanceDresseur:
-        print("Félicitation, vous avez capturé un " + spawn1.name)
+# Boucle pour redemander la pokéball si invalide
+while True:
+    typeball = input(QUESTION2)
+    if typeball.lower() in ["p", "s", "h"]:
+        break
     else:
-        print("Dommage, le pokemon est sorti de la pokeball et a fui...")
+        print(" Veuillez entrer P (pokeball), S (superball) ou H (hyperball) !")
+
+if typeball.lower() == "p":
+    Ball = b1
+elif typeball.lower() == "s":
+    Ball = b2
+elif typeball.lower() == "h":
+    Ball = b3
+
+
+
+TauxCapture = spawn1.TauxCapture
+NvPokemonSauvage = spawn1.nv
+FacteurBall = int(Ball.BonusCapture)
+TauxSucces = (TauxCapture * FacteurBall) / (NvPokemonSauvage / 10) 
+TauxSucces = min(TauxSucces, 100)  # Limiter à 100%
+
+if action1.lower() == "c":
+    print("Vous lancez la pokeball au pokemon sauvage !")
+    ChanceDresseur = random.randint(1, 100)
+    print(f"Votre tir: {ChanceDresseur}, Taux de succès: {TauxSucces:.1f}%")
+    if ChanceDresseur <= TauxSucces:
+        print(f" Félicitation ! Vous avez capturé un {spawn1.name} de niveau {spawn1.nv} !")
+    else:
+        print(f"Dommage, le {spawn1.name} est sorti de la pokeball et a fui...")
        
 
